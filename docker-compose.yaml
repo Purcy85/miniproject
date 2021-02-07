@@ -1,0 +1,28 @@
+version: "3.0"
+services:
+  app:
+    build:
+      context: . 
+    volumes:
+      - .:/var/www/app
+    depends_on:
+      - mysql
+    working_dir: /var/www/app
+
+  mysql:
+    image: mysql:5.7
+    ports: 
+      - "3388:3306"
+    volumes:
+      - ./docker-volumes-data/db:/var/lib/database
+    environment:
+      MYSQL_DATABASE: app_db
+      MYSQL_ROOT_PASSWORD: root
+
+  webserver:
+    image: nginx:alpine
+    volumes:
+      - .:/var/www/app
+      - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+    ports:
+            - "8080:80"
