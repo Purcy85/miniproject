@@ -14,17 +14,88 @@ class QuizSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('quizzes')->insert([
+    	DB::table('quizzes')->delete();
+
+        $closed_quiz_id = DB::table('quizzes')->insertGetID([
             'name' => 'Closed quiz',
             'status' => 'closed',
         ]);
 
-        DB::table('quizzes')->insert([
+
+        $open_quiz_id = DB::table('quizzes')->insertGetID([
             'name' => 'Open quiz',
             'status' => 'open',
         ]);
 
-        DB::table('quizzes')->insert([
+        $question_id = DB::table('questions')->insertGetID([
+            'quiz_id' => $open_quiz_id,
+            'title' => 'Which is larger?',
+        ]);
+
+        DB::table('options')->insert([
+            'question_id' => $question_id,
+            'dice' => '[4]',
+            'correct' => 0,
+        ]);
+        DB::table('options')->insert([
+            'question_id' => $question_id,
+            'dice' => '[3]',
+            'correct' => 0,
+        ]);
+        DB::table('options')->insert([
+            'question_id' => $question_id,
+            'dice' => '[1]',
+            'correct' => 1,
+        ]);
+
+        $question_id = DB::table('questions')->insertGetID([
+            'quiz_id' => $open_quiz_id,
+            'title' => 'Which is larger?',
+        ]);
+
+        DB::table('options')->insert([
+            'question_id' => $question_id,
+            'dice' => '[5]',
+            'correct' => 0,
+        ]);
+        DB::table('options')->insert([
+            'question_id' => $question_id,
+            'dice' => '[3]',
+            'correct' => 0,
+        ]);
+        DB::table('options')->insert([
+            'question_id' => $question_id,
+            'dice' => '[2]',
+            'correct' => 0,
+        ]);
+        DB::table('options')->insert([
+            'question_id' => $question_id,
+            'dice' => '[6]',
+            'correct' => 1,
+        ]);
+
+        $question_id = DB::table('questions')->insertGetID([
+            'quiz_id' => $open_quiz_id,
+            'title' => 'Which is larger?',
+        ]);
+
+        DB::table('options')->insert([
+            'question_id' => $question_id,
+            'dice' => '[5, \'add\', 4]',
+            'correct' => 0,
+        ]);
+        DB::table('options')->insert([
+            'question_id' => $question_id,
+            'dice' => '[4, \'add\', 3]',
+            'correct' => 0,
+        ]);
+        DB::table('options')->insert([
+            'question_id' => $question_id,
+            'dice' => '[4, \'add\', 6]',
+            'correct' => 1,
+        ]);
+
+        $pending_quiz_id = DB::table('quizzes')->insertGetID([
             'name' => 'Pending quiz',
             'status' => 'pending',
         ]);

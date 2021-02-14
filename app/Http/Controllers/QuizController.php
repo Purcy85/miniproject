@@ -24,10 +24,22 @@ class QuizController extends Controller
      */
     public function index()
     {
-        // TODO: load in quizzes from db
-
-        $quizzes = Quiz::where('status', 'open')->get(); //['Quiz 1', 'Quiz 2', 'Quiz 3'];
+        $quizzes = Quiz::where('status', 'open')->get();
 
         return view('quizzes', ['quizzes' => $quizzes]);
+    }
+
+    /**
+     * Show a quiz with questions.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function showQuiz($quiz_id)
+    {
+        $quiz = Quiz::find($quiz_id);
+
+        // TODO: load in questions from db
+
+        return view('quiz', ['quiz' => $quiz]);
     }
 }

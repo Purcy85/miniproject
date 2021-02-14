@@ -10,7 +10,7 @@
                 <div class="card-body">
                     @if (count($quizzes))
                         @foreach ($quizzes as $quiz)
-                            <p>{{ $quiz['name'] }}</p>
+                            <p><a href="/games/{{ $quiz['id'] }}" class="underline text-gray-900 dark:text-white">{{ $quiz['name'] }}</a></p>
                         @endforeach
                     @else
                         <div class="alert alert-success" role="alert">

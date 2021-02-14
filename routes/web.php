@@ -22,3 +22,5 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/games', [App\Http\Controllers\QuizController::class, 'index'])->name('quizzes');
+
+Route::get('/games/{quiz_id}', [App\Http\Controllers\QuizController::class, 'showQuiz'])->name('quizzes');
