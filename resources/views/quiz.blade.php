@@ -9,7 +9,12 @@
                     <div class="card-header">{{ __($quiz['name']) }}</div>
                     @if ($quiz['status'] == 'open')
                         <div class="card-body">
-                            Quiz is open and ready to play
+                            @foreach ($quiz->questions()->get() as $question)
+                                <p>{{ $question['title'] }}</p>
+                                @foreach ($question->options()->get() as $option)
+                                    <p>{{ $option['dice'] }}</p>
+                                @endforeach
+                            @endforeach
                         </div>
                     @elseif($quiz['status'] == 'closed')
                         <div class="card-body">

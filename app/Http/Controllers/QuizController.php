@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Quiz;
+use App\Models\Question;
 
 class QuizController extends Controller
 {
@@ -37,8 +38,6 @@ class QuizController extends Controller
     public function showQuiz($quiz_id)
     {
         $quiz = Quiz::find($quiz_id);
-
-        // TODO: load in questions from db
 
         return view('quiz', ['quiz' => $quiz]);
     }
