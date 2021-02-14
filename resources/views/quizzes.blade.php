@@ -8,13 +8,13 @@
                 <div class="card-header">{{ __('Dice Games') }}</div>
 
                 <div class="card-body">
-                    @if ($quizzes)
-		        @foreach ($quizzes as $quiz)
-			    <p>{{ $quiz }}</p>
-			@endforeach
-		    @else
+                    @if (count($quizzes))
+                        @foreach ($quizzes as $quiz)
+                            <p>{{ $quiz['name'] }}</p>
+                        @endforeach
+                    @else
                         <div class="alert alert-success" role="alert">
-			    There are currently no games to play
+                            There are currently no games to play
                         </div>
                     @endif
                 </div>

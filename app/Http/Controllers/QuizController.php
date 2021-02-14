@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Quiz;
 
 class QuizController extends Controller
 {
@@ -25,7 +26,7 @@ class QuizController extends Controller
     {
         // TODO: load in quizzes from db
 
-        $quizzes = ['Quiz 1', 'Quiz 2', 'Quiz 3'];
+        $quizzes = Quiz::where('status', 'open')->get(); //['Quiz 1', 'Quiz 2', 'Quiz 3'];
 
         return view('quizzes', ['quizzes' => $quizzes]);
     }
