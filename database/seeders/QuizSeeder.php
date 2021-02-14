@@ -81,17 +81,17 @@ class QuizSeeder extends Seeder
 
         DB::table('options')->insert([
             'question_id' => $question_id,
-            'dice' => '[5, \'add\', 4]',
+            'dice' => '[5, "add", 4]',
             'correct' => 0,
         ]);
         DB::table('options')->insert([
             'question_id' => $question_id,
-            'dice' => '[4, \'add\', 3]',
+            'dice' => '[4, "add", 3]',
             'correct' => 0,
         ]);
         DB::table('options')->insert([
             'question_id' => $question_id,
-            'dice' => '[4, \'add\', 6]',
+            'dice' => '[4, "add", 6]',
             'correct' => 1,
         ]);
 
